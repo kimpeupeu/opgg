@@ -1,5 +1,5 @@
 import React from "react";
-import { League } from "../../../modules/api/types";
+import { League } from "../../../lib/api/types";
 
 export interface RankProfileProps {
   league: League;
@@ -7,7 +7,7 @@ export interface RankProfileProps {
 
 const RankProfile: React.FC<RankProfileProps> = ({ league }) => {
   const totalPlays = league.wins + league.losses;
-  const winRate = (league.wins / totalPlays) * 100;
+  const winRate = Math.round((league.wins / totalPlays) * 100);
 
   return (
     <div>
@@ -17,10 +17,10 @@ const RankProfile: React.FC<RankProfileProps> = ({ league }) => {
         <p>탑 {totalPlays}</p>
         <p>{league.tierRank.tier}</p>
         <p>
-          <strong>{league.tierRank.tierRankPoint}</strong>
-          {league.wins}승 {league.losses}패
+          <strong>{league.tierRank.tierRankPoint}LP</strong> / {league.wins}승{" "}
+          승률 {league.losses}패
         </p>
-        <p>{winRate}</p>
+        <p>{winRate}%</p>
       </div>
     </div>
   );

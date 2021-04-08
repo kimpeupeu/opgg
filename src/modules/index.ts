@@ -1,12 +1,16 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import summonerInfoReducer from "./api/summoner";
-import matchesReducer from "./api/matches";
+import summonerInfoReducer from "./summoner";
+import matchesReducer from "./matches";
 import commonSlice from "./common";
+import mostInfoSlice from "./mostInfo";
+import summonerInstant from "./summonerInstant";
 
 export const store = configureStore({
   reducer: {
+    mostInfo: mostInfoSlice,
     matches: matchesReducer,
     summonerInfo: summonerInfoReducer,
+    summonerInstant: summonerInstant,
     common: commonSlice,
   },
 });

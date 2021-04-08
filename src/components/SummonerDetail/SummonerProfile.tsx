@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppSelector } from "../../lib/hooks";
-import { selectSummonerInfo } from "../../modules/api/summoner";
-import { TierRank } from "../../modules/api/types";
+import { selectSummonerInfo } from "../../modules/summoner";
+import { TierRank } from "../../lib/api/types";
 
 interface PreviousTierItemProps {
   season: number;
@@ -33,6 +33,10 @@ const PreviousTierList: React.FC<PreviousTierListProps> = ({ prevTiers }) => {
 const SummonerProfile = () => {
   const summonerInfo = useAppSelector(selectSummonerInfo);
 
+  if (!summonerInfo) {
+    return <div>loading</div>;
+  }
+
   return (
     <>
       <div>
@@ -41,8 +45,8 @@ const SummonerProfile = () => {
       <div>
         <div>
           <img
-            width="120px"
-            height="120px"
+            width="120"
+            height="120"
             src={summonerInfo.summoner.profileImageUrl}
             alt="tier mark"
           />

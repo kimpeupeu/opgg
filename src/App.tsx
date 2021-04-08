@@ -1,10 +1,10 @@
 import React from "react";
-import SummonerDetail from "./components/SummonerDetail";
+import SummonerDetailPage from "./pages/SummonerDetailPage";
 
 function App() {
   return (
     <>
-      <SummonerDetail />
+      <SummonerDetailPage />
     </>
   );
 }

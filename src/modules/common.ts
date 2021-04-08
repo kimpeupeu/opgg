@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getSummoner } from "./api/summoner";
+import { getSummoner } from "./summoner";
 import { AppThunk, RootState } from "./index";
 
 export interface SummonerInfoState {
@@ -9,7 +9,7 @@ export interface SummonerInfoState {
 
 const initialState: SummonerInfoState = {
   searchHistory: [],
-  currentSummoner: "Hide on bush",
+  currentSummoner: "",
 };
 
 export const commonSlice = createSlice({
