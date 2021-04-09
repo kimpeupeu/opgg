@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import { MatchesDTO } from "../lib/api/types";
+import { MatchesDTO } from "lib/api/types";
 
 export interface MatchesState {
   status: "idle" | "loading" | "failed";

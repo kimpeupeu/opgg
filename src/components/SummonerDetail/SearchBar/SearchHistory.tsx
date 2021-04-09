@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "../../../lib/hooks";
-import { removeHistory } from "../../../modules/common";
+import { useAppDispatch } from "lib/hooks";
+import { removeHistory, searchSummoner } from "modules/common";
 
 export interface SearchHistoryProps {
   history: string[];
@@ -16,7 +16,9 @@ const SearchHistoryItem: React.FC<SearchHistoryItemProps> = ({ name }) => {
 
   return (
     <SearchHistoryItemWrap key={name}>
-      {name}{" "}
+      <QuickSearchButton onClick={() => dispatch(searchSummoner(name))}>
+        {name}
+      </QuickSearchButton>
       <RemoveButton onClick={() => dispatch(removeHistory(name))}>
         &times;
       </RemoveButton>
@@ -50,9 +52,20 @@ const SearchHistoryItemWrap = styled.li`
   justify-content: space-between;
 `;
 
+const QuickSearchButton = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 const RemoveButton = styled.button`
   background: none;
   border: none;
+  outline: none;
 
   :hover {
     cursor: pointer;

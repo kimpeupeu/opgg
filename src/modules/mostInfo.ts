@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import api from "../lib/api";
-import { MostInfoDTO } from "../lib/api/types";
+import api from "lib/api";
+import { MostInfoDTO } from "lib/api/types";
 
 export interface MostInfoState {
   status: "idle" | "loading" | "failed";

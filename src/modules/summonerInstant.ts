@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from ".";
-import api from "../lib/api";
-import { SummonerDTO } from "../lib/api/types";
+import api from "lib/api";
+import { SummonerDTO } from "lib/api/types";
 import { SummonerInfoState } from "./summoner";
 
 const initialState: SummonerInfoState = {

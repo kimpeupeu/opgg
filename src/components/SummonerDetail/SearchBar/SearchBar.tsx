@@ -1,19 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "../../../lib/hooks";
+import { useAppDispatch, useAppSelector, useOutsideClick } from "lib/hooks";
 import {
   searchSummoner,
   selectCurrentSummoner,
   selectSearchHistory,
-} from "../../../modules/common";
+} from "modules/common";
 import {
   getSummonerInstant,
   selectSummonerInstant,
-} from "../../../modules/summonerInstant";
+} from "modules/summonerInstant";
 import SummonerInstant from "./SummonerInstant";
 import SearchHistory from "./SearchHistory";
 
 const SearchBar = () => {
+  const searchBarRef = React.useRef<HTMLDivElement>(null);
   const history = useAppSelector(selectSearchHistory);
   const summonerName = useAppSelector(selectCurrentSummoner);
   const [localKeyword, setLocalKeyword] = React.useState(summonerName);
@@ -23,10 +24,14 @@ const SearchBar = () => {
 
   React.useEffect(() => {
     if (localKeyword) dispatch(getSummonerInstant(localKeyword));
-  }, [localKeyword]);
+  }, [localKeyword, dispatch]);
+
+  useOutsideClick(searchBarRef, () => {
+    setFocused(false);
+  });
 
   return (
-    <SearchBarWrapper>
+    <SearchBarWrapper ref={searchBarRef}>
       <SearchForm>
         <SearchInput
           placeholder="소환사명, 챔피언, ..."
@@ -38,7 +43,7 @@ const SearchBar = () => {
             if (e.key === "Enter") dispatch(searchSummoner(localKeyword));
           }}
           onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
+          // onBlur={() => setFocused(false)}
         />
         <SearchButton
           type="button"
@@ -64,6 +69,8 @@ const SearchBar = () => {
 
 const SearchBarWrapper = styled.div`
   display: relative;
+  border-radius: 2px;
+  overflow: hidden;
 `;
 
 const SearchForm = styled.div`

@@ -115,8 +115,21 @@ export interface Summary {
   wins: number;
 }
 
+export interface ChampionSummary {
+  id: number;
+  key: string;
+  name: string;
+  imageUrl: string;
+  games: number;
+  kills: number;
+  deaths: number;
+  assists: number;
+  wins: number;
+  losses: number;
+}
+
 export interface MatchesDTO {
-  champions: Champion[];
+  champions: ChampionSummary[];
   games: GameInfo[];
   positions: Position[];
   summary: Summary;

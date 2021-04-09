@@ -12,6 +12,7 @@ const HeaderContent = styled.div<{
   alignItems: "flex-start" | "center" | "flex-end";
 }>`
   max-width: 1000px;
+  margin: auto;
   height: 100%;
   display: flex;
   justify-content: ${(props) => props.justifyContent};

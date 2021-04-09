@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getSummoner } from "./summoner";
 import { AppThunk, RootState } from "./index";
+import { getMatches } from "./matches";
 
 export interface SummonerInfoState {
   searchHistory: string[];
@@ -59,9 +60,11 @@ export const searchSummoner = (summonerName: string): AppThunk => (
   getState
 ) => {
   if (summonerName) {
-    dispatch(getSummoner(summonerName));
     dispatch(addHistory(summonerName));
     dispatch(setCurrentSummoner(summonerName));
+
+    dispatch(getSummoner(summonerName));
+    dispatch(getMatches(summonerName));
   }
 };
 

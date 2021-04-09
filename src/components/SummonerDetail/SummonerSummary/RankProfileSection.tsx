@@ -1,7 +1,8 @@
 import React from "react";
-import { useAppSelector } from "../../../lib/hooks";
-import { selectSummonerInfo } from "../../../modules/summoner";
+import { useAppSelector } from "lib/hooks";
+import { selectSummonerInfo } from "modules/summoner";
 import RankProfile from "./RankProfile";
+import styled from "styled-components";
 
 const RankProfileSection = () => {
   const summonerInfo = useAppSelector(selectSummonerInfo);
@@ -11,11 +12,21 @@ const RankProfileSection = () => {
   }
 
   return (
-    <div>
+    <Wrapper>
       <RankProfile league={summonerInfo.summoner.leagues[0]} />
       <RankProfile league={summonerInfo.summoner.leagues[1]} />
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  > * {
+    margin-bottom: 10px;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
 
 export default RankProfileSection;
