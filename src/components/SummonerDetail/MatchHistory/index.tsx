@@ -8,7 +8,9 @@ import { selectMatches } from "modules/matches";
 
 const MatchHistory = () => {
   const matches = useAppSelector(selectMatches);
-  const [matchType, setMatchType] = React.useState();
+  const [matchType, setMatchType] = React.useState<
+    "all" | "솔랭" | "자유 5:5 랭크"
+  >("all");
 
   if (!matches) return null;
 
@@ -16,11 +18,27 @@ const MatchHistory = () => {
     <>
       <Card>
         <TabBar>
-          <TabItem type="button" active>
+          <TabItem
+            type="button"
+            active={matchType === "all"}
+            onClick={() => setMatchType("all")}
+          >
             전체
           </TabItem>
-          <TabItem type="button">솔로게임</TabItem>
-          <TabItem type="button">자유랭크</TabItem>
+          <TabItem
+            type="button"
+            active={matchType === "솔랭"}
+            onClick={() => setMatchType("솔랭")}
+          >
+            솔로게임
+          </TabItem>
+          <TabItem
+            type="button"
+            active={matchType === "자유 5:5 랭크"}
+            onClick={() => setMatchType("자유 5:5 랭크")}
+          >
+            자유랭크
+          </TabItem>
         </TabBar>
         <MatchSummary
           matchSummary={matches.summary}
@@ -29,7 +47,13 @@ const MatchHistory = () => {
         />
       </Card>
       <Card>
-        <MatchHistoryList matches={matches.games} />
+        <MatchHistoryList
+          matches={
+            matchType === "all"
+              ? matches.games
+              : matches.games.filter((item) => item.gameType === matchType)
+          }
+        />
       </Card>
     </>
   );
