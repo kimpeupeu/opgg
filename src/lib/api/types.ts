@@ -78,6 +78,7 @@ export interface Ward {
 
 export interface GameInfoStats {
   general: General;
+  ward: Ward;
 }
 
 export interface GameInfo {

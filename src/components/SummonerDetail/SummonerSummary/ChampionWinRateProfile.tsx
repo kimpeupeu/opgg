@@ -46,15 +46,26 @@ const ChampionWinRateItem: React.FC<ChampionWinRateItemProps> = ({
       />
       <SummaryContent>
         <div>
-          <SummaryItem>{mostChampionSummary.name}</SummaryItem>
+          <SummaryItem style={{ marginBottom: "4px" }}>
+            {mostChampionSummary.name}
+          </SummaryItem>
           <SummaryItem caption>CS {mostChampionSummary.cs} (2.4)</SummaryItem>
         </div>
         <div>
-          <SummaryItem color={pickKDAColor(kda)}>{kda} 평점</SummaryItem>
+          <SummaryItem
+            style={{ marginBottom: "4px" }}
+            color={pickKDAColor(kda)}
+          >
+            {kda} 평점
+          </SummaryItem>
           <SummaryItem caption>CS {mostChampionSummary.cs} (2.4)</SummaryItem>
         </div>
         <div>
-          <SummaryItem textAlign="right" color={pickWinRateColor(winRate)}>
+          <SummaryItem
+            style={{ marginBottom: "4px" }}
+            textAlign="right"
+            color={pickWinRateColor(winRate)}
+          >
             {winRate}%
           </SummaryItem>
           <SummaryItem textAlign="right" caption>

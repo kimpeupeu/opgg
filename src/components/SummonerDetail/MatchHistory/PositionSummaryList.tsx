@@ -1,6 +1,6 @@
 import React from "react";
-import { ChampionSummary, Position, Summary } from "lib/api/types";
-import { calcKDA, calcTotalGames, calcWinRate } from "lib/utils/calcuator";
+import { Position } from "lib/api/types";
+import { calcWinRate } from "lib/utils/calcuator";
 import styled from "styled-components";
 
 interface PositionSummaryItemProps {
@@ -84,6 +84,7 @@ const SummaryBlock = styled.div`
 const PositionName = styled.p`
   font-size: 14px;
   color: #333;
+  margin-bottom: 4px;
 `;
 
 const SummaryContent = styled.div`

@@ -16,7 +16,9 @@ const MatchHistory = () => {
     <>
       <Card>
         <TabBar>
-          <TabItem type="button">전체</TabItem>
+          <TabItem type="button" active>
+            전체
+          </TabItem>
           <TabItem type="button">솔로게임</TabItem>
           <TabItem type="button">자유랭크</TabItem>
         </TabBar>
@@ -27,7 +29,7 @@ const MatchHistory = () => {
         />
       </Card>
       <Card>
-        <MatchHistoryList />
+        <MatchHistoryList matches={matches.games} />
       </Card>
     </>
   );
@@ -40,15 +42,10 @@ const TabBar = styled.div`
 
 const TabItem = styled.a<{ active?: boolean }>`
   font-size: 12px;
-  background-color: ${(props) => (props.active ? "#f2f2f2" : "#ededed")};
-  color: #5e5e5e;
-  border: ${(props) => (props.active ? "none" : "1px solid #cdd2d2")};
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #555;
+  padding: 10px 16px;
   font-weight: ${(props) => (props.active ? 700 : 400)};
-  box-sizing: border-box;
+  border-bottom: ${(props) => (props.active ? "2px solid #1f8ecd" : "")};
 `;
 
 TabItem.defaultProps = {

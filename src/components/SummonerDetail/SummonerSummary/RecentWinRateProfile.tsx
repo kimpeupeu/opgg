@@ -6,7 +6,7 @@ import SummaryContainer, {
   SummaryItem,
   ChampionImage,
 } from "./SummaryContainer";
-import { calcTotalGames, calcWinRate } from "lib/utils/calcuator";
+import { calcWinRate } from "lib/utils/calcuator";
 
 interface RecentWinRatePorfileProps {
   recentWinRateSummary: ChampionWinRate[];
@@ -27,7 +27,6 @@ interface RecentWinRateItemProps {
 }
 
 const RecentWinRateItem: React.FC<RecentWinRateItemProps> = ({ summary }) => {
-  const totalGames = calcTotalGames(summary);
   const winRate = calcWinRate(summary);
 
   return (

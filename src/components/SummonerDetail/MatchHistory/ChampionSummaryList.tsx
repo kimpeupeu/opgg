@@ -1,8 +1,7 @@
 import React from "react";
 import { ChampionSummary } from "lib/api/types";
-import { calcKDA, calcTotalGames, calcWinRate } from "lib/utils/calcuator";
+import { calcKDA, calcWinRate } from "lib/utils/calcuator";
 import styled from "styled-components";
-import PositionSummaryItem from "./PositionSummaryList";
 import { pickKDAColor, pickWinRateColor } from "lib/utils/colorPickers";
 
 export interface ChampionSummaryProps {
