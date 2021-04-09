@@ -50,9 +50,7 @@ const ChampionWinRateItem: React.FC<ChampionWinRateItemProps> = ({
           <SummaryItem caption>CS {mostChampionSummary.cs} (2.4)</SummaryItem>
         </div>
         <div>
-          <SummaryItem color={pickKDAColor(kda === -1 ? 999 : kda)}>
-            {kda} 평점
-          </SummaryItem>
+          <SummaryItem color={pickKDAColor(kda)}>{kda} 평점</SummaryItem>
           <SummaryItem caption>CS {mostChampionSummary.cs} (2.4)</SummaryItem>
         </div>
         <div>

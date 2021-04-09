@@ -8,6 +8,7 @@ import { selectMatches } from "modules/matches";
 
 const MatchHistory = () => {
   const matches = useAppSelector(selectMatches);
+  const [matchType, setMatchType] = React.useState();
 
   if (!matches) return null;
 

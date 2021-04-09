@@ -1,5 +1,5 @@
 export function pickKDAColor(kda: number): string {
-  if (kda >= 5.0) {
+  if (kda >= 5.0 || kda === -1) {
     return "#e19205";
   } else if (kda >= 4.0) {
     return "#1f8ecd";
@@ -10,10 +10,10 @@ export function pickKDAColor(kda: number): string {
   }
 }
 
-export function pickWinRateColor(winRate: number): string {
+export function pickWinRateColor(winRate: number): string | undefined {
   if (winRate >= 60.0) {
     return "#c6443e";
   }
 
-  return "#879292";
+  return undefined;
 }
