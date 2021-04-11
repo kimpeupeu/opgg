@@ -91,6 +91,7 @@ const MatchSummaryText = styled.p`
 
 const KDAText = styled.p`
   margin-left: 6px;
+  color: ${(props) => (props.color ? props.color : "#333")};
 `;
 
 export default ChampionSummaryList;
