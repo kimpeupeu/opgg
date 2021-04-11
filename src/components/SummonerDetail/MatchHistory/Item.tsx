@@ -26,7 +26,13 @@ const Item: React.FC<ItemProps> = ({ imgSrc }) => {
       onMouseLeave={() => setHover(false)}
     >
       {imgSrc && <ItemImage src={imgSrc} />}
-      {hover && <DropDown>{data && removeTags(data.description)}</DropDown>}
+      {hover && data && (
+        <ItemInfoDropDown>
+          <ItemName>{data.name}</ItemName>
+          <ItemDescription>{removeTags(data.description)}</ItemDescription>
+          <ItemGold>{`${data.gold.total}(${data.gold.base})`}</ItemGold>
+        </ItemInfoDropDown>
+      )}
     </ItemWrappper>
   );
 };
@@ -47,11 +53,31 @@ const ItemWrappper = styled.div`
   background-color: ${(props) => (props.children ? "" : "rgba(0, 0, 0, 0.3)")};
 `;
 
-const DropDown = styled.div`
+const ItemInfoDropDown = styled.div`
   position: absolute;
   width: 260px;
-  background-color: white;
+  background-color: #222727;
   z-index: 99;
+  padding: 10px;
+`;
+
+const ItemName = styled.h3`
+  color: #00cfbf;
+  font-size: 11px;
+  margin-bottom: 4px;
+`;
+
+const ItemDescription = styled.p`
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.3636363636rem;
+  margin-bottom: 4px;
+`;
+
+const ItemGold = styled.p`
+  color: #ffc659;
+  font-size: 11px;
+  margin-bottom: 4px;
 `;
 
 export default Item;

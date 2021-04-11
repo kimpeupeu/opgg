@@ -167,10 +167,17 @@ export interface MostInfoDTO {
   recentWinRate: ChampionWinRate[];
 }
 
+export interface Gold {
+  base: number;
+  total: number;
+  sell: number;
+  purchasable: boolean;
+}
+
 export interface Basic {
   name: string;
   rune?: any;
-  gold: any;
+  gold: Gold;
   group?: string;
   description: string;
   colloq: string;
