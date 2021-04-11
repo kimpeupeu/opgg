@@ -13,26 +13,16 @@ export interface MatchHistoryItemProps {
 }
 
 const MatchHistoryItem: React.FC<MatchHistoryItemProps> = ({ match }) => {
-  const accessory = match.items
-    .slice(-1)
-    .map((item) => <Item imgSrc={item.imageUrl} />);
-  let items = match.items
-    .slice(0, -1)
-    .map((item) => <Item imgSrc={item.imageUrl} />);
+  const accessory = match.items.slice(-1).map((item) => item.imageUrl);
+  let items = match.items.slice(0, -1).map((item, index) => item.imageUrl);
 
   while (items.length < 6) {
-    items.push(<Item />);
+    items.push("");
   }
 
   items = [...items.slice(0, 3), ...accessory, ...items.slice(3)];
   items.push(
-    <Item
-      imgSrc={
-        match.isWin
-          ? "/images/icon-buildblue-p.png"
-          : "/images/icon-buildred-p.png"
-      }
-    />
+    match.isWin ? "/images/icon-buildblue-p.png" : "/images/icon-buildred-p.png"
   );
 
   return (
@@ -87,7 +77,11 @@ const MatchHistoryItem: React.FC<MatchHistoryItemProps> = ({ match }) => {
         </ContribueForKills>
       </PlayStats>
       <ItemStats>
-        <ItemList>{items}</ItemList>
+        <ItemList>
+          {items.map((item, index) => (
+            <Item key={`${match.gameId}_item_${index}`} imgSrc={item} />
+          ))}
+        </ItemList>
         <WardStats>
           <WardImage
             src={`/images/icon-ward-${match.isWin ? "blue" : "red"}.png`}
