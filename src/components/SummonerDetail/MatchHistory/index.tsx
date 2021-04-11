@@ -16,7 +16,7 @@ const MatchHistory = () => {
 
   return (
     <>
-      <Card>
+      <Card style={{ marginBottom: "16px" }}>
         <TabBar>
           <TabItem
             type="button"
