@@ -7,9 +7,7 @@ import styled from "styled-components";
 const SummonerProfile = () => {
   const summonerInfo = useAppSelector(selectSummonerInfo);
 
-  if (!summonerInfo) {
-    return <div>loading</div>;
-  }
+  if (!summonerInfo) return null;
 
   return (
     <Wrapper>

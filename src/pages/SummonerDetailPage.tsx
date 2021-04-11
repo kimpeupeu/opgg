@@ -8,10 +8,10 @@ import MatchHistory from "components/SummonerDetail/MatchHistory";
 import styled from "styled-components";
 import { useAppSelector } from "lib/hooks";
 import { selectCurrentSummoner, selectIsLoading } from "modules/common";
-import Loading from "components/commons/Loading";
 
 const SummonerDetailPage = () => {
   const hasResult = useAppSelector(selectCurrentSummoner);
+  const isLoading = useAppSelector(selectIsLoading);
 
   return (
     <Background>
@@ -38,6 +38,7 @@ const SummonerDetailPage = () => {
       ) : (
         <NoResultHelp />
       )}
+      {isLoading && <Loading />}
     </Background>
   );
 };
@@ -63,6 +64,16 @@ const NoResultHelpBlock = styled.p`
   padding-top: 24px;
   font-size: 34px;
   color: #242929;
+`;
+
+const Loading = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
 `;
 
 export default SummonerDetailPage;
