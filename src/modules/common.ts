@@ -55,6 +55,14 @@ export const selectCurrentSummoner = (state: RootState) =>
 export const selectSearchHistory = (state: RootState) =>
   state.common.searchHistory;
 
+export const selectIsLoading = (state: RootState) => {
+  return (
+    state.matches.status !== "idle" &&
+    state.mostInfo.status !== "idle" &&
+    state.summonerInfo.status !== "idle"
+  );
+};
+
 export const searchSummoner = (summonerName: string): AppThunk => (
   dispatch,
   getState
