@@ -9,7 +9,7 @@ export interface MatchHistoryListProps {
 const MatchHistoryList: React.FC<MatchHistoryListProps> = ({ matches }) => (
   <div>
     {matches.map((match, index) => (
-      <MatchHistoryItem key={index} match={match} />
+      <MatchHistoryItem key={`match_item_${index}`} match={match} />
     ))}
   </div>
 );
