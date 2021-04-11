@@ -166,3 +166,35 @@ export interface MostInfoDTO {
   champions: MostChampion[];
   recentWinRate: ChampionWinRate[];
 }
+
+export interface Basic {
+  name: string;
+  rune?: any;
+  gold: any;
+  group?: string;
+  description: string;
+  colloq: string;
+  plaintext: string;
+  consumed?: boolean;
+  stacks?: number;
+  depth?: number;
+  consumeOnFull?: boolean;
+  from?: any[];
+  into?: any[];
+  specialRecipe?: number;
+  inStore?: boolean;
+  hideFromAll?: boolean;
+  requiredChampion?: string;
+  requiredAlly?: string;
+  stats: any;
+  tags: any[];
+  maps: any;
+}
+
+export interface Data {
+  [key: string]: Basic;
+}
+
+export interface ItemData {
+  data: Data;
+}

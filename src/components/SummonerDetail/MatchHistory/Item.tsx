@@ -1,18 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import itemData from "lib/api/item.json";
 import path from "path";
+import { ItemDB } from "lib/api";
 
 export interface ItemProps {
   imgSrc?: string;
 }
 
-export interface Data {
-  [key: string]: any;
-}
-
-export interface Test {
-  data: Data;
+function removeTags(strHtml: string) {
+  return strHtml.replace(/(<([^>]+)>)/gi, "");
 }
 
 const Item: React.FC<ItemProps> = ({ imgSrc }) => {
@@ -22,7 +18,7 @@ const Item: React.FC<ItemProps> = ({ imgSrc }) => {
   }
   const itemNum = imgSrc ? path.basename(imgSrc).split(".")[0] : null;
 
-  const data = itemNum && (itemData as Test).data[itemNum];
+  const data = itemNum && ItemDB.data[itemNum];
 
   return (
     <ItemWrappper
@@ -30,7 +26,7 @@ const Item: React.FC<ItemProps> = ({ imgSrc }) => {
       onMouseLeave={() => setHover(false)}
     >
       {imgSrc && <ItemImage src={imgSrc} />}
-      {hover && <DropDown>{data && data.description}</DropDown>}
+      {hover && <DropDown>{data && removeTags(data.description)}</DropDown>}
     </ItemWrappper>
   );
 };

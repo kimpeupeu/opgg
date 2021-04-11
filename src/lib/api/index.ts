@@ -1,3 +1,6 @@
+import ItemJson from "./item.json";
+import { ItemData } from "./types";
+
 const API_SERVER_BASE = "https://codingtest.op.gg/api";
 
 const api = {
@@ -28,5 +31,7 @@ const api = {
     return await response.json();
   },
 };
+
+export const ItemDB = ItemJson as ItemData;
 
 export default api;
