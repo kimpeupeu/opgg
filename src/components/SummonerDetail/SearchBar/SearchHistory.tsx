@@ -65,12 +65,14 @@ const SearchHistoryList = styled.ol`
 const SearchHistoryItemWrap = styled.li`
   display: flex;
   justify-content: space-between;
+  padding: 4px 0;
 `;
 
 const QuickSearchButton = styled.button`
   background: none;
   border: none;
   outline: none;
+  color: #666;
 
   :hover {
     cursor: pointer;
@@ -81,6 +83,7 @@ const RemoveButton = styled.button`
   background: none;
   border: none;
   outline: none;
+  color: #666;
 
   :hover {
     cursor: pointer;
