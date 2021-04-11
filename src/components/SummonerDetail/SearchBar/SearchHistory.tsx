@@ -31,9 +31,9 @@ const SearchHistory: React.FC<SearchHistoryProps> = ({ history }) => {
     <SearchHistoryWrapper>
       <Title>검색기록</Title>
       <SearchHistoryList>
-        {history.map((name) => (
-          <SearchHistoryItem key={name} name={name} />
-        ))}
+        {history
+          .map((name) => <SearchHistoryItem key={name} name={name} />)
+          .reverse()}
       </SearchHistoryList>
     </SearchHistoryWrapper>
   );

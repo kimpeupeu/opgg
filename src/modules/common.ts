@@ -30,11 +30,13 @@ export const commonSlice = createSlice({
   initialState,
   reducers: {
     addHistory: (state, action: PayloadAction<string>) => {
+      // 원래 있으면 해당 항목 제거 후 다시 삽입 (최신 유지)
       state.searchHistory = state.searchHistory.filter(
         (val) => action.payload !== val
       );
       state.searchHistory.push(action.payload);
 
+      // 항목이 5개 이상이면 오래된 항목 제거
       if (state.searchHistory.length > 5) {
         delete state.searchHistory[0];
       }
